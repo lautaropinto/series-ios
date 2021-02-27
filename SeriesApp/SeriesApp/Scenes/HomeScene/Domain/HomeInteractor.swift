@@ -10,7 +10,7 @@ import Foundation
 internal class HomeInteractor: HomeInteractorProtocol {
     let service: SeriesServiceProtocol
     
-    init(service: SeriesServiceProtocol, mapper: HomeViewModelMapperProtocol) {
+    init(service: SeriesServiceProtocol) {
         self.service = service
     }
     

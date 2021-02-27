@@ -28,3 +28,21 @@ internal protocol CoordinatorProtocol {
     
     func start()
 }
+
+internal protocol ProgramaticalLayout {
+    func setUpView()
+    func buildViewHierarchy()
+    func setUpConstraints()
+    func setUpAdditionalConfigs()
+}
+
+internal extension ProgramaticalLayout {
+    
+    func setUpView() {
+        buildViewHierarchy()
+        setUpConstraints()
+        setUpAdditionalConfigs()
+    }
+    
+    func setUpAdditionalConfigs() {}
+}

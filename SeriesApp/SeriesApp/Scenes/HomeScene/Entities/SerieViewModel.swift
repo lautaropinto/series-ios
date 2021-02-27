@@ -10,7 +10,7 @@ import UIKit
 struct SerieViewModel {
     let title: String
     let titleColor: UIColor
-    let backgroundImage: UIImageView
+    let backgroundImageUrl: String
     let genre: String
     let genreColor: UIColor
 }

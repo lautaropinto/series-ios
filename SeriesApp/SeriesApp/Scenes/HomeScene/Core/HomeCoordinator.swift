@@ -15,7 +15,12 @@ internal class HomeCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let controller = HomeViewController()
+        let network = NetworkingClient()
+        let service = SeriesService(network: network)
+        let interactor = HomeInteractor(service: service)
+        let mapper = HomeViewModelMapper()
+        let presenter = HomePresenter(interactor: interactor, mapper: mapper)
+        let controller = HomeViewController(presenter: presenter)
         
         navigator.setRoot(controller)
     }

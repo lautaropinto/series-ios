@@ -16,6 +16,8 @@ internal protocol HomeViewModelMapperProtocol {
 }
 
 internal protocol HomePresenterProtocol {
+    var view: HomeViewProtocol? { get set }
+    
     func viewIsReady()
 }
 

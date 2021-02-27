@@ -12,7 +12,7 @@ internal class HomeViewModelMapper: HomeViewModelMapperProtocol {
         return popularSeries.compactMap({ popularSerie in
             return SerieViewModel(title: popularSerie.name,
                                   titleColor: .white,
-                                  backgroundImage: UIImageView(),
+                                  backgroundImageUrl: ImageURLBuilder.buildURL(from: popularSerie.backdropPath),
                                   genre: "",
                                   genreColor: .white)
         })

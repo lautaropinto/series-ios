@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeMainView: UIView, ProgramaticalLayout {
+class HomeMainView: UIView, ProgramaticalLayout, PopularSerieTableViewCellDelegate {
     lazy var containerView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +45,7 @@ class HomeMainView: UIView, ProgramaticalLayout {
     }()
     
     var viewModel: [SerieViewModel] = []
+    public weak var delegate: HomeMainViewDelegate?
 
     init() {
         super.init(frame: .zero)
@@ -70,7 +71,6 @@ class HomeMainView: UIView, ProgramaticalLayout {
             
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-//            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13),
             tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
@@ -80,6 +80,10 @@ class HomeMainView: UIView, ProgramaticalLayout {
     func displayPopularSeries(viewModel: [SerieViewModel]) {
         self.viewModel = viewModel
         tableView.reloadData()
+    }
+    
+    func didTap(viewModel: SerieViewModel?) {
+        delegate?.didTap(viewModel: viewModel)
     }
 }
 
@@ -94,6 +98,7 @@ extension HomeMainView: UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.viewModel = viewModel[indexPath.row]
+        cell.delegate = self
         
         return cell
     }

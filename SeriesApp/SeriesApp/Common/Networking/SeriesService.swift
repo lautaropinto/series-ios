@@ -23,4 +23,8 @@ internal class SeriesService: SeriesServiceProtocol {
     func getPopularSeries(_ completion: @escaping (Result<PopularSeries, Error>) -> Void) {
         network.execute(Endpoint.getPopular, completion: completion)
     }
+    
+    func getGenre(_ completion: @escaping (Result<[GenreModel], Error>) -> Void) {
+        network.execute(Endpoint.getGenres, completion: completion)
+    }
 }

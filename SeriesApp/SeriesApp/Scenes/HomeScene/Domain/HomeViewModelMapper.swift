@@ -10,7 +10,8 @@ import UIKit
 internal class HomeViewModelMapper: HomeViewModelMapperProtocol {
     func map(_ popularSeries: [SerieModel]) -> [SerieViewModel] {
         return popularSeries.compactMap({ popularSerie in
-            return SerieViewModel(title: popularSerie.name,
+            return SerieViewModel(id: popularSerie.id,
+                                  title: popularSerie.name,
                                   titleColor: .white,
                                   backgroundImageUrl: ImageURLBuilder.buildURL(from: popularSerie.backdropPath),
                                   genre: "",

@@ -10,11 +10,15 @@ import Foundation
 internal class HomePresenter: HomePresenterProtocol {
     let interactor: HomeInteractorProtocol
     let mapper: HomeViewModelMapperProtocol
+    let coordinator: HomeCoordinatorProtocol
     public weak var view: HomeViewProtocol?
     
-    init(interactor: HomeInteractorProtocol, mapper: HomeViewModelMapperProtocol) {
+    init(interactor: HomeInteractorProtocol,
+         mapper: HomeViewModelMapperProtocol,
+         coordinator: HomeCoordinatorProtocol) {
         self.interactor = interactor
         self.mapper = mapper
+        self.coordinator = coordinator
     }
     
     func viewIsReady() {
@@ -28,5 +32,15 @@ internal class HomePresenter: HomePresenterProtocol {
                 //TODO: View should display error message.
             }
         }
+    }
+    
+    func didTapSerie(viewModel: SerieViewModel) {
+        interactor.getSerieDetail(from: viewModel.id, completion: { serie in
+            if let serie = serie {
+                coordinator.navigateToDetail(serie)
+            } else {
+                //TODO: View should display error message.
+            }
+        })
     }
 }

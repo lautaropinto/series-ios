@@ -8,6 +8,7 @@
 import UIKit
 
 struct SerieViewModel {
+    let id: Int
     let title: String
     let titleColor: UIColor
     let backgroundImageUrl: String

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  SeriesApp
 //
 //  Created by Lautaro Pinto on 26/02/2021.
@@ -11,6 +11,7 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
     lazy var mainView: HomeMainView = {
         let view = HomeMainView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         
         return view
     }()
@@ -27,9 +28,12 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColor
         presenter.viewIsReady()
         setUpView()
     }
@@ -46,6 +50,12 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+    
+    func setUpAdditionalConfigs() {
+        navigationController?.navigationBar.barTintColor = .navigationColor
+        navigationController?.navigationBar.barStyle = .black
+        view.backgroundColor = .backgroundColor
+    }
 }
 
 extension HomeViewController: HomeViewProtocol {
@@ -54,6 +64,14 @@ extension HomeViewController: HomeViewProtocol {
             guard let self = self else { return }
             
             self.mainView.displayPopularSeries(viewModel: viewModel)
+        }
+    }
+}
+
+extension HomeViewController: HomeMainViewDelegate {
+    func didTap(viewModel: SerieViewModel?) {
+        if let viewModel = viewModel {
+            presenter.didTapSerie(viewModel: viewModel)            
         }
     }
 }

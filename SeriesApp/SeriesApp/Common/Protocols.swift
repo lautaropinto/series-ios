@@ -46,3 +46,7 @@ internal extension ProgramaticalLayout {
     
     func setUpAdditionalConfigs() {}
 }
+
+internal protocol PresenterProtocol {
+    func viewIsReady()
+}

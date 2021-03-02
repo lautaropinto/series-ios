@@ -9,19 +9,32 @@ import Foundation
 
 internal class HomeInteractor: HomeInteractorProtocol {
     let service: SeriesServiceProtocol
+    var popularSeries: [SerieModel] = []
     
     init(service: SeriesServiceProtocol) {
         self.service = service
     }
     
     func getPopularSeries(_ completion: @escaping ([SerieModel]?) -> Void) {
-        self.service.getPopularSeries { result in
+        self.service.getPopularSeries { [weak self] result in
+            guard let self = self else { return }
+            
             do {
                 let result = try result.get()
-                completion(result.results)
+                self.popularSeries = result.results
+                completion(self.popularSeries)
             } catch {
                 completion(nil)
             }
         }
+    }
+    
+    func getSerieDetail(from id: Int, completion: (SerieModel?) -> Void) {
+        if let serie = popularSeries.first(where: { $0.id == id }) {
+            completion(serie)
+        } else {
+            completion(nil)
+        }
+        
     }
 }

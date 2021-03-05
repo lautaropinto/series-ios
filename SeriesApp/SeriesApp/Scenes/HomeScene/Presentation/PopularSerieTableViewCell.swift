@@ -36,7 +36,25 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
             titleLabel.text = viewModel?.title
             titleLabel.textColor = viewModel?.titleColor
             backgroundImage.downloaded(from: viewModel?.backgroundImageUrl ?? "",
-                                                 contentMode: .scaleToFill)
+                                       contentMode: .scaleToFill) {
+                guard let image = self.backgroundImage.image, let currentCGImage = image.cgImage else { return }
+                let currentCIImage = CIImage(cgImage: currentCGImage)
+
+                let filter = CIFilter(name: "CIColorMonochrome")
+                filter?.setValue(currentCIImage, forKey: "inputImage")
+
+                filter?.setValue(CIColor(red: 60.0/255.0, green: 86.0/255.0, blue: 99.0/255.0), forKey: "inputColor")
+
+                filter?.setValue(0.9, forKey: "inputIntensity")
+                guard let outputImage = filter?.outputImage else { return }
+
+                let context = CIContext()
+
+                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                    let processedImage = UIImage(cgImage: cgimg)
+                    self.backgroundImage.image = processedImage
+                }
+            }
         }
     }
     
@@ -91,5 +109,16 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
             containerView.alpha = 1
             delegate?.didTap(viewModel: viewModel)
         }
+    }
+}
+
+extension UIView {
+    func addoverlay(color: UIColor = .black,alpha : CGFloat = 0.6) {
+        let overlay = UIView()
+        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        overlay.frame = bounds
+        overlay.backgroundColor = color
+        overlay.alpha = alpha
+        addSubview(overlay)
     }
 }

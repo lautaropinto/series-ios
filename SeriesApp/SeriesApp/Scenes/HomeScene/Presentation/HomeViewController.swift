@@ -32,6 +32,10 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
         return .lightContent
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUpAdditionalConfigs()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewIsReady()

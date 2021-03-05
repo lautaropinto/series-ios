@@ -11,6 +11,7 @@ class DetailViewController: UIViewController, ProgramaticalLayout {
     lazy var mainView: DetailMainView = {
         let view = DetailMainView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         
         return view
     }()
@@ -27,10 +28,16 @@ class DetailViewController: UIViewController, ProgramaticalLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_icon")?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain, target: navigationController,
+                                                           action: #selector(UINavigationController.popViewController(animated:)))
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewIsReady()
-        view.backgroundColor = .white
         setUpView()
     }
     
@@ -50,7 +57,15 @@ class DetailViewController: UIViewController, ProgramaticalLayout {
 
 extension DetailViewController: DetailViewProtocol {
     func displaySerieDetail(viewModel: SerieDetailViewModel) {
-//        print("Lautaro - viewmodel", viewModel)
         mainView.displayDetail(from: viewModel)
+        
+    }
+}
+
+extension DetailViewController: DetailMainViewDelegate {
+    func tintNavBar(with color: UIColor) {
+        navigationController?.navigationBar.barTintColor = color
+        navigationController?.navigationBar.backgroundColor = color
+        navigationController?.navigationBar.isTranslucent = false
     }
 }

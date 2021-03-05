@@ -24,6 +24,7 @@ internal class HomeInteractor: HomeInteractorProtocol {
                 self.popularSeries = result.results
                 completion(self.popularSeries)
             } catch {
+                print("result:", result)
                 completion(nil)
             }
         }

@@ -30,7 +30,7 @@ internal class HomeCoordinator: HomeCoordinatorProtocol {
                                              title: serie.name,
                                              date: serie.date,
                                              overview: serie.overview,
-                                             posterPath: serie.posterPath)
+                                             posterPath: serie.posterPath ?? "")
         
         let detailCoordinator = DetailCoordinator(navigator: navigator, selectedSerie: selectedSerie)
         detailCoordinator.start()

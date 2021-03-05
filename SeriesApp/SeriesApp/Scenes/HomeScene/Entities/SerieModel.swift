@@ -9,10 +9,10 @@ import Foundation
 
 struct SerieModel: Decodable {
     let id: Int
-    let backdropPath: String
+    let backdropPath: String?
     let name: String
     let genreIds: [Int]
-    let posterPath: String
+    let posterPath: String?
     let overview: String
     let date: String
     

@@ -13,7 +13,7 @@ internal class HomeViewModelMapper: HomeViewModelMapperProtocol {
             return SerieViewModel(id: popularSerie.id,
                                   title: popularSerie.name,
                                   titleColor: .white,
-                                  backgroundImageUrl: ImageURLBuilder.buildURL(from: popularSerie.backdropPath),
+                                  backgroundImageUrl: ImageURLBuilder.buildURL(from: popularSerie.backdropPath ?? ""),
                                   genre: "",
                                   genreColor: .white)
         })

@@ -21,6 +21,7 @@ internal enum Endpoint: RequestProviding {
             guard let url = URL(string: "\(baseURL)/popular?api_key=\(apiKey)&language=en-US&page=1") else {
                 preconditionFailure("Invalid URL used to create URL instance")
             }
+            print(url)
             
             return URLRequest(url: url)
         case .getGenres:

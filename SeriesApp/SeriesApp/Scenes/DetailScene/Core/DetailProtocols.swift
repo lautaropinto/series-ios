@@ -5,7 +5,7 @@
 //  Created by Lautaro Pinto on 27/02/2021.
 //
 
-import Foundation
+import UIKit
 
 internal protocol DetailCoordinatorProtocol: CoordinatorProtocol { }
 
@@ -19,6 +19,10 @@ internal protocol DetailPresenterProtocol: PresenterProtocol {
 
 internal protocol DetailViewProtocol: AnyObject {
     func displaySerieDetail(viewModel: SerieDetailViewModel)
+}
+
+internal protocol DetailMainViewDelegate: AnyObject {
+    func tintNavBar(with color: UIColor)
 }
 
 internal protocol DetailViewModelMapperProtocol {

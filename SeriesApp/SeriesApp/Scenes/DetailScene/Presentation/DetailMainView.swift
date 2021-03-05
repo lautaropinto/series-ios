@@ -29,6 +29,8 @@ class DetailMainView: UIView, ProgramaticalLayout {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 6
+        imageView.layer.masksToBounds = true
         
         return imageView
     }()
@@ -66,6 +68,7 @@ class DetailMainView: UIView, ProgramaticalLayout {
     }()
     
     var topHeight: NSLayoutConstraint!
+    public weak var delegate: DetailMainViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -123,10 +126,13 @@ class DetailMainView: UIView, ProgramaticalLayout {
     }
     
     func displayDetail(from viewModel: SerieDetailViewModel) {
-        print("Lautaro", viewModel)
         serieInfo.serieTitle = viewModel.title
         serieInfo.serieYear = viewModel.year
-        imageView.downloaded(from: ImageURLBuilder.buildURL(from: viewModel.image))
+        imageView.downloaded(from: ImageURLBuilder.buildURL(from: viewModel.image)) {
+            self.backgroundColor = self.imageView.image?.averageColor
+            self.delegate?.tintNavBar(with: self.imageView.image?.averageColor ?? .navigationColor)
+        }
+        
         overviewLabel.text = viewModel.overview
     }
     
@@ -138,7 +144,6 @@ extension DetailMainView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yPos = scrollView.contentOffset.y
         let newHeaderViewHeight: CGFloat = topHeight.constant - yPos
-        
         if newHeaderViewHeight > headerViewMaxHeight {
             topHeight.constant = headerViewMaxHeight
         } else if newHeaderViewHeight < headerViewMinHeight {

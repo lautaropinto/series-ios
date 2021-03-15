@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeMainView: UIView, ProgramaticalLayout, PopularSerieTableViewCellDelegate {
+class HomeMainView: UIView, ProgramaticalLayout {
     lazy var containerView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,10 +81,6 @@ class HomeMainView: UIView, ProgramaticalLayout, PopularSerieTableViewCellDelega
         self.viewModel = viewModel
         tableView.reloadData()
     }
-    
-    func didTap(viewModel: SerieViewModel?) {
-        delegate?.didTap(viewModel: viewModel)
-    }
 }
 
 extension HomeMainView: UITableViewDataSource, UITableViewDelegate {
@@ -98,8 +94,11 @@ extension HomeMainView: UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.viewModel = viewModel[indexPath.row]
-        cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didTap(viewModel: viewModel[indexPath.row])
     }
 }

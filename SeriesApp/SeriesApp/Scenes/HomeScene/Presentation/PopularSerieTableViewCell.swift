@@ -31,10 +31,23 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
         return label
     }()
     
+    private lazy var genreLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = UIColor(with: "#1e2b31").withAlphaComponent(0.8)
+        label.textColor = .white
+        label.layer.cornerRadius = 3
+        label.text = "ADVENTURE"
+        label.font = UIFont.systemFont(ofSize: 12)
+        
+        return label
+    }()
+    
     var viewModel: SerieViewModel? {
         didSet {
             titleLabel.text = viewModel?.title
             titleLabel.textColor = viewModel?.titleColor
+            genreLabel.text = viewModel?.genre // is empty for now
             backgroundImage.downloaded(from: viewModel?.backgroundImageUrl ?? "",
                                        contentMode: .scaleToFill) {
                 guard let image = self.backgroundImage.image, let currentCGImage = image.cgImage else { return }
@@ -58,11 +71,8 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
         }
     }
     
-    public weak var delegate: PopularSerieTableViewCellDelegate?
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
         setUpView()
     }
     
@@ -73,6 +83,7 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
     func buildViewHierarchy() {
         containerView.addSubview(backgroundImage)
         backgroundImage.addSubview(titleLabel)
+        backgroundImage.addSubview(genreLabel)
         contentView.addSubview(containerView)
     }
     
@@ -89,26 +100,13 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
             backgroundImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: backgroundImage.leadingAnchor, constant: 16),
             titleLabel.bottomAnchor.constraint(equalTo: backgroundImage.bottomAnchor, constant: -15),
+            genreLabel.topAnchor.constraint(equalTo: backgroundImage.topAnchor, constant: 12),
+            genreLabel.trailingAnchor.constraint(equalTo: backgroundImage.trailingAnchor, constant: -12),
         ])
     }
     
     func setUpAdditionalConfigs() {
         contentView.backgroundColor = .backgroundColor
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self,
-                                                               action: #selector(onHover))
-        longPressRecognizer.minimumPressDuration = 0
-
-        containerView.addGestureRecognizer(longPressRecognizer)
-    }
-    
-    @objc func onHover(gesture:UILongPressGestureRecognizer) {
-        if gesture.state == UIGestureRecognizer.State.began {
-            containerView.alpha = 0.6
-        }
-        if gesture.state == UIGestureRecognizer.State.ended {
-            containerView.alpha = 1
-            delegate?.didTap(viewModel: viewModel)
-        }
     }
 }
 

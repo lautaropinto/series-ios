@@ -27,9 +27,9 @@ internal class HomePresenter: HomePresenterProtocol {
             
             if let popularSeries = result {
                 let viewModel = self.mapper.map(popularSeries)
+                
                 self.view?.displayPopularSeries(viewModel: viewModel)
             } else {
-                print("getPopularSeries error")
                 //TODO: View should display error message.
             }
         }
@@ -41,7 +41,6 @@ internal class HomePresenter: HomePresenterProtocol {
                 coordinator.navigateToDetail(serie)
             } else {
                 //TODO: View should display error message.
-                print("getSerieDetail error")
             }
         })
     }

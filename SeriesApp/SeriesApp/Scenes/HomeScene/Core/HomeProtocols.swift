@@ -26,10 +26,6 @@ internal protocol HomeViewProtocol: AnyObject {
     func displayPopularSeries(viewModel: [SerieViewModel])
 }
 
-internal protocol PopularSerieTableViewCellDelegate: AnyObject {
-    func didTap(viewModel: SerieViewModel?)
-}
-
 internal protocol HomeMainViewDelegate: AnyObject {
     func didTap(viewModel: SerieViewModel?)
 }

@@ -33,6 +33,7 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewWillDisappear(animated)
         setUpAdditionalConfigs()
     }
     

@@ -14,8 +14,17 @@ internal class HomeViewModelMapper: HomeViewModelMapperProtocol {
                                   title: popularSerie.name,
                                   titleColor: .white,
                                   backgroundImageUrl: ImageURLBuilder.buildURL(from: popularSerie.backdropPath ?? ""),
-                                  genre: "",
+                                  genre: mapGenre(from: popularSerie.genreIds.first),
                                   genreColor: .white)
         })
+    }
+    
+    func mapGenre(from id: Int?) -> String {
+        if let id = id {
+            let genres = GenreService.shared.genres
+            
+            return genres.first(where: { $0.id == id })?.name ?? ""
+        }
+        return ""
     }
 }

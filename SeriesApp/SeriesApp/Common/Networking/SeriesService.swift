@@ -11,7 +11,7 @@ internal protocol SeriesServiceProtocol {
     var network: NetworkingProtocol { get }
     
     func getPopularSeries(_ completion: @escaping (Result<PopularSeries, Error>) -> Void)
-    func getGenres(_ completion: @escaping (Result<[GenreModel], Error>) -> Void)
+    func getGenres(_ completion: @escaping (Result<GenreResult, Error>) -> Void)
 }
 
 internal class SeriesService: SeriesServiceProtocol {
@@ -25,7 +25,7 @@ internal class SeriesService: SeriesServiceProtocol {
         network.execute(Endpoint.getPopular, completion: completion)
     }
     
-    func getGenres(_ completion: @escaping (Result<[GenreModel], Error>) -> Void) {
+    func getGenres(_ completion: @escaping (Result<GenreResult, Error>) -> Void) {
         network.execute(Endpoint.getGenres, completion: completion)
     }
 }

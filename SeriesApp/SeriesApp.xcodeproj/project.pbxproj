@@ -44,6 +44,7 @@
 		E9AE692625E9120900D7BA9F /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE692525E9120900D7BA9F /* Protocols.swift */; };
 		E9AE692D25E9128600D7BA9F /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */; };
 		E9AE693625E912CC00D7BA9F /* UIImageView+downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */; };
+		E9D936B12600E1210086BE49 /* GenreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936B02600E1210086BE49 /* GenreService.swift */; };
 		E9DEF47825EE76F40046673E /* SuscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF47725EE76F40046673E /* SuscriptionButton.swift */; };
 		E9DEF47D25EE81AA0046673E /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF47C25EE81AA0046673E /* DetailInfo.swift */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		E9AE692525E9120900D7BA9F /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloaded.swift"; sourceTree = "<group>"; };
+		E9D936B02600E1210086BE49 /* GenreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreService.swift; sourceTree = "<group>"; };
 		E9DEF47725EE76F40046673E /* SuscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuscriptionButton.swift; sourceTree = "<group>"; };
 		E9DEF47C25EE81AA0046673E /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -269,6 +271,7 @@
 				E9AE692525E9120900D7BA9F /* Protocols.swift */,
 				E90D582E25EA945000D3E0E3 /* Constants.swift */,
 				E9DEF47725EE76F40046673E /* SuscriptionButton.swift */,
+				E9D936B02600E1210086BE49 /* GenreService.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				E98EC50425ED5CA700FA3678 /* DetailMainView.swift in Sources */,
 				E90D583E25EA9AA900D3E0E3 /* UIView+safeArea.swift in Sources */,
 				E9AE692D25E9128600D7BA9F /* NetworkingClient.swift in Sources */,
+				E9D936B12600E1210086BE49 /* GenreService.swift in Sources */,
 				E90D582225EA8F1600D3E0E3 /* HomePresenter.swift in Sources */,
 				E9AE691B25E9114500D7BA9F /* Navigator.swift in Sources */,
 				E90D581825EA8C0F00D3E0E3 /* SerieViewModel.swift in Sources */,

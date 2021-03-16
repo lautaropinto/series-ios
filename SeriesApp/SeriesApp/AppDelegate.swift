@@ -11,6 +11,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let networking = NetworkingClient()
+        let service = SeriesService(network: networking)
+
+        service.getGenres({ result in
+            do {
+                let genreResult = try result.get()
+                GenreService.shared.genres = genreResult.genres
+            } catch {
+                // TODO: Implement error handling.
+                print("Lautaro - fail fetching genres")
+            }
+        })
+        
         return true
     }
 

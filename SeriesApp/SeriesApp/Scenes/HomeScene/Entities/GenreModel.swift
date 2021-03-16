@@ -7,6 +7,10 @@
 
 import Foundation
 
+internal struct GenreResult: Decodable {
+    let genres: [GenreModel]
+}
+
 internal struct GenreModel: Decodable {
     let id: Int
     let name: String

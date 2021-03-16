@@ -23,7 +23,7 @@ internal class HomeViewModelMapper: HomeViewModelMapperProtocol {
         if let id = id {
             let genres = GenreService.shared.genres
             
-            return genres.first(where: { $0.id == id })?.name ?? ""
+            return genres.first(where: { $0.id == id })?.name.uppercased() ?? ""
         }
         return ""
     }

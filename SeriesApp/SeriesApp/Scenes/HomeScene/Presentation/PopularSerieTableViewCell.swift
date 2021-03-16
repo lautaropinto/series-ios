@@ -40,7 +40,7 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
         label.backgroundColor = UIColor(with: "#1e2b31").withAlphaComponent(0.8)
         label.textColor = .white
         label.layer.cornerRadius = 3
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 12)
         label.layer.masksToBounds = true
         
         return label

@@ -27,17 +27,21 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         
         return label
     }()
     
-    private lazy var genreLabel: UILabel = {
-        let label = UILabel()
+    private lazy var genreLabel: PaddingLabel = {
+        let label = PaddingLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(with: "#1e2b31").withAlphaComponent(0.8)
         label.textColor = .white
         label.layer.cornerRadius = 3
         label.font = UIFont.systemFont(ofSize: 12)
+        label.layer.masksToBounds = true
         
         return label
     }()
@@ -49,6 +53,7 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
             titleLabel.text = viewModel?.title
             titleLabel.textColor = viewModel?.titleColor
             genreLabel.text = viewModel?.genre
+            genreLabel.textColor = viewModel?.genreColor
             backgroundImage.downloaded(from: viewModel?.backgroundImageUrl ?? "",
                                        contentMode: .scaleToFill) {
                 guard self.backgroundImage.image != nil else { return }
@@ -87,6 +92,7 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
             backgroundImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.7),
             titleLabel.leadingAnchor.constraint(equalTo: backgroundImage.leadingAnchor, constant: 16),
             titleLabel.bottomAnchor.constraint(equalTo: backgroundImage.bottomAnchor, constant: -15),
             genreLabel.topAnchor.constraint(equalTo: backgroundImage.topAnchor, constant: 12),

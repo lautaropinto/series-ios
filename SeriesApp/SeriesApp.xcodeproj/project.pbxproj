@@ -44,6 +44,7 @@
 		E9AE692625E9120900D7BA9F /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE692525E9120900D7BA9F /* Protocols.swift */; };
 		E9AE692D25E9128600D7BA9F /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */; };
 		E9AE693625E912CC00D7BA9F /* UIImageView+downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */; };
+		E9B6B2552600F8EB0022035F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B6B2542600F8EB0022035F /* PaddingLabel.swift */; };
 		E9D936B12600E1210086BE49 /* GenreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936B02600E1210086BE49 /* GenreService.swift */; };
 		E9D936B62600F1C10086BE49 /* UIImageView+untint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936B52600F1C10086BE49 /* UIImageView+untint.swift */; };
 		E9D936BB2600F22A0086BE49 /* GradientColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936BA2600F22A0086BE49 /* GradientColors.swift */; };
@@ -112,6 +113,7 @@
 		E9AE692525E9120900D7BA9F /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloaded.swift"; sourceTree = "<group>"; };
+		E9B6B2542600F8EB0022035F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		E9D936B02600E1210086BE49 /* GenreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreService.swift; sourceTree = "<group>"; };
 		E9D936B52600F1C10086BE49 /* UIImageView+untint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+untint.swift"; sourceTree = "<group>"; };
 		E9D936BA2600F22A0086BE49 /* GradientColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientColors.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				E9DEF47725EE76F40046673E /* SuscriptionButton.swift */,
 				E9D936B02600E1210086BE49 /* GenreService.swift */,
 				E9D936BA2600F22A0086BE49 /* GradientColors.swift */,
+				E9B6B2542600F8EB0022035F /* PaddingLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				E90D583925EA969E00D3E0E3 /* PopularSerieTableViewCell.swift in Sources */,
 				E90D581D25EA8CDE00D3E0E3 /* HomeViewModelMapper.swift in Sources */,
 				E90D585725EAC4F800D3E0E3 /* GenreModel.swift in Sources */,
+				E9B6B2552600F8EB0022035F /* PaddingLabel.swift in Sources */,
 				E90D583425EA94A900D3E0E3 /* HomeMainView.swift in Sources */,
 				E9AE68E425E910DF00D7BA9F /* SceneDelegate.swift in Sources */,
 			);

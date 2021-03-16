@@ -28,11 +28,13 @@ class DetailViewController: UIViewController, ProgramaticalLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back_icon")?.withRenderingMode(.alwaysOriginal),
-                                                           style: .plain, target: navigationController,
-                                                           action: #selector(UINavigationController.popViewController(animated:)))
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
@@ -64,8 +66,12 @@ extension DetailViewController: DetailViewProtocol {
 
 extension DetailViewController: DetailMainViewDelegate {
     func tintNavBar(with color: UIColor) {
-        navigationController?.navigationBar.barTintColor = color
+        navigationController?.navigationBar.barTintColor = .green
         navigationController?.navigationBar.backgroundColor = color
         navigationController?.navigationBar.isTranslucent = false
+    }
+    
+    func backButtonPressed() {
+        presenter.backButtonPressed()
     }
 }

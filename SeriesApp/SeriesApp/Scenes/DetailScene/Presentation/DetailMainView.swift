@@ -8,6 +8,15 @@
 import UIKit
 
 class DetailMainView: UIView, ProgramaticalLayout {
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
+        button.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
     lazy var topWrapper: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,13 +96,16 @@ class DetailMainView: UIView, ProgramaticalLayout {
         scrollView.addSubview(overviewLabel)
         addSubview(topWrapper)
         addSubview(scrollView)
+        addSubview(backButton)
     }
     
     func setUpConstraints() {
         topHeight = topWrapper.heightAnchor.constraint(equalToConstant: 450)
         
         NSLayoutConstraint.activate([
-            topWrapper.topAnchor.constraint(equalTo: self.topAnchor),
+            backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 25),
+            backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 13),
+            topWrapper.topAnchor.constraint(equalTo: self.topAnchor, constant: 45),
             topWrapper.widthAnchor.constraint(equalTo: self.widthAnchor),
             topWrapper.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             topView.topAnchor.constraint(equalTo: topWrapper.topAnchor),
@@ -134,6 +146,10 @@ class DetailMainView: UIView, ProgramaticalLayout {
         }
         
         overviewLabel.text = viewModel.overview
+    }
+    
+    @objc func backButtonPressed(_ sender: UIButton) {
+        delegate?.backButtonPressed()
     }
     
     let headerViewMaxHeight: CGFloat = 450

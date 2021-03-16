@@ -7,7 +7,9 @@
 
 import UIKit
 
-internal protocol DetailCoordinatorProtocol: CoordinatorProtocol { }
+internal protocol DetailCoordinatorProtocol: CoordinatorProtocol {
+    func navigateToPreviousScene()
+}
 
 internal protocol DetailInteractorProtocol {
     func getSerieDetail(completion: (SerieDetailModel?) -> Void)
@@ -15,6 +17,8 @@ internal protocol DetailInteractorProtocol {
 
 internal protocol DetailPresenterProtocol: PresenterProtocol {
     var view: DetailViewProtocol? { get set }
+    
+    func backButtonPressed()
 }
 
 internal protocol DetailViewProtocol: AnyObject {
@@ -23,6 +27,7 @@ internal protocol DetailViewProtocol: AnyObject {
 
 internal protocol DetailMainViewDelegate: AnyObject {
     func tintNavBar(with color: UIColor)
+    func backButtonPressed()
 }
 
 internal protocol DetailViewModelMapperProtocol {

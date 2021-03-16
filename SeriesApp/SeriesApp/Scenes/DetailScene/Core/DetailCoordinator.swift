@@ -17,15 +17,16 @@ internal class DetailCoordinator: DetailCoordinatorProtocol {
     }
     
     func start() {
-        
-        
-        
         DispatchQueue.main.async {
             let interactor = DetailInteractor(selectedSerie: self.selectedSerie)
             let mapper = DetailViewModelMapper()
-            let presenter = DetailPresenter(interactor: interactor, mapper: mapper)
+            let presenter = DetailPresenter(interactor: interactor, mapper: mapper, coordinator: self)
             let controller = DetailViewController(presenter: presenter)
             self.navigator.push(controller, animated: true)            
         }
+    }
+    
+    func navigateToPreviousScene() {
+        navigator.pop(animated: true)
     }
 }

@@ -10,11 +10,13 @@ import Foundation
 internal class DetailPresenter: DetailPresenterProtocol {
     let interactor: DetailInteractorProtocol
     let mapper: DetailViewModelMapperProtocol
+    let coordinator: DetailCoordinatorProtocol
     public weak var view: DetailViewProtocol?
     
-    init(interactor: DetailInteractorProtocol, mapper: DetailViewModelMapperProtocol) {
+    init(interactor: DetailInteractorProtocol, mapper: DetailViewModelMapperProtocol, coordinator: DetailCoordinatorProtocol) {
         self.interactor = interactor
         self.mapper = mapper
+        self.coordinator = coordinator
     }
     
     func viewIsReady() {
@@ -27,5 +29,9 @@ internal class DetailPresenter: DetailPresenterProtocol {
                 //TODO: View should display error message.
             }
         })
+    }
+    
+    func backButtonPressed() {
+        coordinator.navigateToPreviousScene()
     }
 }

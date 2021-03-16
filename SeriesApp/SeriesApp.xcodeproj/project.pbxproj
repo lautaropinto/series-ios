@@ -45,6 +45,8 @@
 		E9AE692D25E9128600D7BA9F /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */; };
 		E9AE693625E912CC00D7BA9F /* UIImageView+downloaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */; };
 		E9D936B12600E1210086BE49 /* GenreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936B02600E1210086BE49 /* GenreService.swift */; };
+		E9D936B62600F1C10086BE49 /* UIImageView+untint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936B52600F1C10086BE49 /* UIImageView+untint.swift */; };
+		E9D936BB2600F22A0086BE49 /* GradientColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D936BA2600F22A0086BE49 /* GradientColors.swift */; };
 		E9DEF47825EE76F40046673E /* SuscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF47725EE76F40046673E /* SuscriptionButton.swift */; };
 		E9DEF47D25EE81AA0046673E /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF47C25EE81AA0046673E /* DetailInfo.swift */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,8 @@
 		E9AE692C25E9128600D7BA9F /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloaded.swift"; sourceTree = "<group>"; };
 		E9D936B02600E1210086BE49 /* GenreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreService.swift; sourceTree = "<group>"; };
+		E9D936B52600F1C10086BE49 /* UIImageView+untint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+untint.swift"; sourceTree = "<group>"; };
+		E9D936BA2600F22A0086BE49 /* GradientColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientColors.swift; sourceTree = "<group>"; };
 		E9DEF47725EE76F40046673E /* SuscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuscriptionButton.swift; sourceTree = "<group>"; };
 		E9DEF47C25EE81AA0046673E /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +276,7 @@
 				E90D582E25EA945000D3E0E3 /* Constants.swift */,
 				E9DEF47725EE76F40046673E /* SuscriptionButton.swift */,
 				E9D936B02600E1210086BE49 /* GenreService.swift */,
+				E9D936BA2600F22A0086BE49 /* GradientColors.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				E9AE693525E912CC00D7BA9F /* UIImageView+downloaded.swift */,
 				E90D582925EA935700D3E0E3 /* UIColor+hex.swift */,
 				E90D583D25EA9AA900D3E0E3 /* UIView+safeArea.swift */,
+				E9D936B52600F1C10086BE49 /* UIImageView+untint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -476,12 +482,14 @@
 				E98131BE25E974B6003BC64D /* Endpoint.swift in Sources */,
 				E9AE68E625E910DF00D7BA9F /* HomeViewController.swift in Sources */,
 				E98EC4F025ED205500FA3678 /* DetailInteractor.swift in Sources */,
+				E9D936BB2600F22A0086BE49 /* GradientColors.swift in Sources */,
 				E98131D125E978C0003BC64D /* HomeProtocols.swift in Sources */,
 				E98EC50425ED5CA700FA3678 /* DetailMainView.swift in Sources */,
 				E90D583E25EA9AA900D3E0E3 /* UIView+safeArea.swift in Sources */,
 				E9AE692D25E9128600D7BA9F /* NetworkingClient.swift in Sources */,
 				E9D936B12600E1210086BE49 /* GenreService.swift in Sources */,
 				E90D582225EA8F1600D3E0E3 /* HomePresenter.swift in Sources */,
+				E9D936B62600F1C10086BE49 /* UIImageView+untint.swift in Sources */,
 				E9AE691B25E9114500D7BA9F /* Navigator.swift in Sources */,
 				E90D581825EA8C0F00D3E0E3 /* SerieViewModel.swift in Sources */,
 				E9DEF47825EE76F40046673E /* SuscriptionButton.swift in Sources */,

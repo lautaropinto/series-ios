@@ -37,36 +37,25 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
         label.backgroundColor = UIColor(with: "#1e2b31").withAlphaComponent(0.8)
         label.textColor = .white
         label.layer.cornerRadius = 3
-        label.text = "ADVENTURE"
         label.font = UIFont.systemFont(ofSize: 12)
         
         return label
     }()
     
+    private var backgroundLayer = GradientColors().layer
+    
     var viewModel: SerieViewModel? {
         didSet {
             titleLabel.text = viewModel?.title
             titleLabel.textColor = viewModel?.titleColor
-            genreLabel.text = viewModel?.genre // is empty for now
+            genreLabel.text = viewModel?.genre
             backgroundImage.downloaded(from: viewModel?.backgroundImageUrl ?? "",
                                        contentMode: .scaleToFill) {
-                guard let image = self.backgroundImage.image, let currentCGImage = image.cgImage else { return }
-                let currentCIImage = CIImage(cgImage: currentCGImage)
-
-                let filter = CIFilter(name: "CIColorMonochrome")
-                filter?.setValue(currentCIImage, forKey: "inputImage")
-
-                filter?.setValue(CIColor(red: 60.0/255.0, green: 86.0/255.0, blue: 99.0/255.0), forKey: "inputColor")
-
-                filter?.setValue(0.9, forKey: "inputIntensity")
-                guard let outputImage = filter?.outputImage else { return }
-
-                let context = CIContext()
-
-                if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                    let processedImage = UIImage(cgImage: cgimg)
-                    self.backgroundImage.image = processedImage
-                }
+                guard self.backgroundImage.image != nil else { return }
+                    self.backgroundImage.untint()
+                    self.backgroundLayer!.frame = self.backgroundImage.frame
+                    self.backgroundLayer!.removeFromSuperlayer()
+                    self.backgroundImage.layer.insertSublayer(self.backgroundLayer!, at: 0)
             }
         }
     }
@@ -107,16 +96,5 @@ internal class PopularSerieTableViewCell: UITableViewCell, ProgramaticalLayout {
     
     func setUpAdditionalConfigs() {
         contentView.backgroundColor = .backgroundColor
-    }
-}
-
-extension UIView {
-    func addoverlay(color: UIColor = .black,alpha : CGFloat = 0.6) {
-        let overlay = UIView()
-        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        overlay.frame = bounds
-        overlay.backgroundColor = color
-        overlay.alpha = alpha
-        addSubview(overlay)
     }
 }

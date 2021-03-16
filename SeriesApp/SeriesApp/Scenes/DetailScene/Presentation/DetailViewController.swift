@@ -66,7 +66,7 @@ extension DetailViewController: DetailViewProtocol {
 
 extension DetailViewController: DetailMainViewDelegate {
     func tintNavBar(with color: UIColor) {
-        navigationController?.navigationBar.barTintColor = .green
+        navigationController?.navigationBar.barTintColor = color
         navigationController?.navigationBar.backgroundColor = color
         navigationController?.navigationBar.isTranslucent = false
     }

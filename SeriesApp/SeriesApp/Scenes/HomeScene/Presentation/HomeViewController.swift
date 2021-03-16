@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         setUpAdditionalConfigs()
     }
     
@@ -57,6 +57,7 @@ class HomeViewController: UIViewController, ProgramaticalLayout {
     }
     
     func setUpAdditionalConfigs() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = .navigationColor
         navigationController?.navigationBar.barStyle = .black
         view.backgroundColor = .backgroundColor

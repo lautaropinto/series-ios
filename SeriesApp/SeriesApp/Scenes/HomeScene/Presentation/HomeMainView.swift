@@ -23,7 +23,8 @@ class HomeMainView: UIView, ProgramaticalLayout {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "TODAS"
-        label.textColor = .white
+        label.textColor = UIColor.white.withAlphaComponent(0.6)
+        label.font = UIFont.systemFont(ofSize: 12)
         
         return label
     }()
@@ -70,7 +71,8 @@ class HomeMainView: UIView, ProgramaticalLayout {
             containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 17),
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),

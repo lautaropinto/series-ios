@@ -27,6 +27,16 @@ internal class HomeInteractor: HomeInteractorProtocol {
                 completion(nil)
             }
         }
+        
+        self.service.getPopularSeries { result in
+            do {
+                let popularSeries = try result.get()
+                popularSeries.
+            } catch {
+                
+            }
+            
+        }
     }
     
     func getSerieDetail(from id: Int, completion: (SerieModel?) -> Void) {
